@@ -9,6 +9,18 @@ class Base(DeclarativeBase):
     pass
 
 
+class Location(Base):
+    __tablename__ = "logged_locations"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    continent: Mapped[str] = mapped_column(String(255))
+    country: Mapped[str] = mapped_column(String(255))
+    subdivision: Mapped[str] = mapped_column(String(255))
+    city: Mapped[str] = mapped_column(String(255))
+
+    def __repr__(self) -> str:
+        return f"Location(id={self.id!r}, continent={self.continent!r}, country={self.country!r}, subdivision={self.subdivision!r}, city={self.city!r})"
+
+
 class Person(Base):
     __tablename__ = "person"
     id: Mapped[int] = mapped_column(primary_key=True)
